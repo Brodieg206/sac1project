@@ -1,0 +1,41 @@
+# The cumulative textbook value is defined
+cumulativeValue = 0
+
+while True:
+    # A question is asked about the age of the textbook
+    print("How old is your textbook in years")
+    # The user is then prompted to input the age of their textbook in years.
+    # The variable "age" is set to an integer to be used for calculations
+    age = int(input())
+    # A question is asked about the original cost of the textbook.
+    print("What was the original cost of your textbook?")
+    # The user is prompted to input the original cost of the textbook
+    # The variable "purchasedValue" is set to an integer to be used for calculations
+    purchasedValue = int(input())
+
+    # A function is defined called calculateCurrentValue in which the value of the textbook is calculated
+    def calculateCurrentValue(purchasedValue, age):
+        # This calculates the value of the textbook by it losing 20% of value after each year
+        depreciation = purchasedValue * 0.2 * age
+        # This if statement checks to see if depreciation is greater than or equal to purchasedValue
+        if depreciation >= purchasedValue:
+            return 0
+        # The value of purchasedValue minus depreciation is returned outside of the function
+        return purchasedValue - depreciation
+
+    # The values made inside the function are called into cumulativeValue and textbookValue outside of function scope
+    cumulativeValue += calculateCurrentValue(purchasedValue,age)
+    textbookValue = calculateCurrentValue(purchasedValue, age)
+    # The textbook value is printed
+    print("This textbook is worth $" + str(textbookValue))
+    # The cumulative value (collection) is printed
+    print("The collection so far is worth $" + str(cumulativeValue))
+
+    # The user is prompted if they wish to enter another textbook
+    end = input("Do you wish to enter another textbook? (y/n): ")
+    # If the user responds with y the code will restart otherwise any other response will break the code
+    if end == 'n':
+        # Break code if condition isn't met
+        break
+
+
